@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import Dashboard from './pages/Dashboard';
-import Login from './components/Login';
+import React from "react";
+import Sidebar from "./components/Sidebar.jsx";
+import Chat from "./components/Chat.jsx";
+import UserList from "./components/UserList.jsx";
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:4000/users/me', { credentials: 'include' })
-      .then(res => res.json())
-      .then(data => setUser(data))
-      .catch(() => setUser(null));
-  }, []);
-
-  if (!user) return <Login />;
-
-  return <Dashboard />;
+  return (
+    <div className="dashboard">
+      <Sidebar />
+      <Chat />
+      <UserList />
+    </div>
+  );
 }
 
 export default App;
